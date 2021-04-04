@@ -1,6 +1,6 @@
-Function.prototype.myBind = function(context) {
+Function.prototype.myBind = function ( context ) {
   return () => {
-    this.apply(context)
+    this.apply( context )
   }
 }
 
@@ -25,18 +25,18 @@ Function.prototype.myBind = function(context) {
 // myBoundTurnOn(); // should say "Turning on a lamp"
 
 
-Function.prototype.myThrottle = function(interval) {
-    let tooSoon = false;
-    return () => {
-        if (!tooSoon) {
-            tooSoon = true;
-            setTimeout(() => {
-                tooSoon = false;
-                this();
-            }, interval);
-        }
+Function.prototype.myThrottle = function ( interval ) {
+  let tooSoon = false;
+  return () => {
+    if ( !tooSoon ) {
+      tooSoon = true;
+      setTimeout( () => {
+        tooSoon = false;
+        this();
+      }, interval );
     }
-} 
+  }
+}
 
 
 // class Neuron {
@@ -85,49 +85,49 @@ Function.prototype.myThrottle = function(interval) {
 // If we want this behavior for ALL neurons, we can do the same logic in the constructor:
 
 
-Function.prototype.myDebounce = function(interval) {
-    let currentInterval
-    return () => {
-        clearInterval(currentInterval)
-        currentInterval = setTimeout(() => {
-            this();
-        }, interval);
-    }
+Function.prototype.myDebounce = function ( interval ) {
+  let currentInterval
+  return () => {
+    clearInterval( currentInterval )
+    currentInterval = setTimeout( () => {
+      this();
+    }, interval );
+  }
 }
-  
+
 
 class SearchBar {
   constructor() {
     this.query = "";
 
-    this.type = this.type.bind(this);
-    this.search = this.search.bind(this);
+    this.type = this.type.bind( this );
+    this.search = this.search.bind( this );
   }
-  
-  type(letter) {
+
+  type( letter ) {
     this.query += letter;
     this.search();
   }
 
   search() {
-    console.log(`searching for ${this.query}`);
+    console.log( `searching for ${this.query}` );
   }
 }
 const searchBar = new SearchBar;
 
-searchBar.search = searchBar.search.myDebounce(500);
+searchBar.search = searchBar.search.myDebounce( 500 );
 const queryForHelloWorld = () => {
-  searchBar.type("h");
-  searchBar.type("e");
-  searchBar.type("l");
-  searchBar.type("l");
-  searchBar.type("o");
-  searchBar.type(" ");
-  searchBar.type("w");
-  searchBar.type("o");
-  searchBar.type("r");
-  searchBar.type("l");
-  searchBar.type("d");
+  searchBar.type( "h" );
+  searchBar.type( "e" );
+  searchBar.type( "l" );
+  searchBar.type( "l" );
+  searchBar.type( "o" );
+  searchBar.type( " " );
+  searchBar.type( "w" );
+  searchBar.type( "o" );
+  searchBar.type( "r" );
+  searchBar.type( "l" );
+  searchBar.type( "d" );
 }
 
 

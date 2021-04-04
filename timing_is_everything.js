@@ -3,11 +3,11 @@ class Clock {
 
     const now = new Date();
     const dayStart = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        0, 0, 0)
-    this.time = (now.getTime() - dayStart.getTime()) / 1000;
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      0, 0, 0 )
+      this.time = ( now.getTime() - dayStart.getTime() ) / 1000;
 
     this.calculateTimeParts();
     this.printTime();
@@ -22,30 +22,28 @@ class Clock {
   }
 
   calculateTimeParts() {
-    this.hours = Math.floor(this.time / 3600);
-    this.minutes = Math.floor((this.time - this.hours * 3600) / 60);
-    this.seconds = Math.floor(this.time % 60);
+    this.hours = Math.floor( this.time / 3600 );
+    this.minutes = Math.floor( ( this.time - this.hours * 3600 ) / 60 );
+    this.seconds = Math.floor( this.time % 60 );
   }
 
   printTime() {
-    console.log(`${this.hours}:${this.minutes}:${this.seconds}`);
+    console.log( `${this.hours}:${this.minutes}:${this.seconds}` );
     // Format the time in HH:MM:SS
     // Use console.log to print it.
   }
 
   updateAndPrint() {
-      this.time += 1;
-      this.calculateTimeParts();
-      this.printTime();
-    }
-    
-    _tick() {
-    setInterval(this.updateAndPrint.bind(this), 1000)
+    this.time += 1;
+    this.calculateTimeParts();
+    this.printTime();
+  }
+
+  _tick() {
+    setInterval( this.updateAndPrint.bind( this ), 1000 )
     // 1. Increment the time by one second.
     // 2. Call printTime.
   }
 }
 
 const clock = new Clock();
-
-
